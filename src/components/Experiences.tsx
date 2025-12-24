@@ -262,11 +262,7 @@ const Experiences: React.FC = () => {
                     <div className="relative z-10">
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
                         <div>
-                          <h3 className={`text-3xl font-bold mb-2 transition-colors duration-300 ${
-                            activeIndex === index
-                              ? 'bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent'
-                              : 'text-gray-300'
-                          }`}>
+                          <h3 className="text-3xl font-bold mb-2 text-black transition-colors duration-300">
                             {experience.title}
                           </h3>
                           <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-gray-600">

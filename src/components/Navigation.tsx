@@ -13,6 +13,7 @@ const Navigation: React.FC<NavigationProps> = ({ isScrolled }) => {
     { name: 'About', path: '/about' },
     { name: 'Skills', path: '/skills' },
     { name: 'Projects', path: '/projects' },
+    { name: 'Experiences', path: '/experiences' },
     { name: 'Contact', path: '/contact' },
   ];
 

@@ -23,7 +23,7 @@ const Navigation: React.FC<NavigationProps> = ({ isScrolled }) => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-lg'
+          ? 'bg-white/95 backdrop-blur-xl shadow-2xl shadow-cyan-500/10 border-b border-cyan-500/20'
           : 'bg-transparent'
       }`}
     >
@@ -31,7 +31,7 @@ const Navigation: React.FC<NavigationProps> = ({ isScrolled }) => {
         <div className="flex justify-between items-center h-16 md:h-20">
           <Link
             to="/"
-            className="text-2xl font-bold text-primary-600 hover:text-primary-700 transition-colors"
+            className="text-2xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent hover:from-cyan-300 hover:to-blue-400 transition-all duration-300"
           >
             Portfolio
           </Link>
@@ -42,20 +42,23 @@ const Navigation: React.FC<NavigationProps> = ({ isScrolled }) => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`font-medium transition-colors duration-200 ${
+                className={`font-medium transition-all duration-200 relative group ${
                   isActive(link.path)
-                    ? 'text-primary-600'
-                    : 'text-gray-700 hover:text-primary-600'
+                    ? 'text-cyan-600'
+                    : 'text-gray-700 hover:text-cyan-600'
                 }`}
               >
                 {link.name}
+                {isActive(link.path) && (
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></span>
+                )}
               </Link>
             ))}
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-gray-700 focus:outline-none"
+            className="md:hidden text-gray-700 focus:outline-none hover:text-cyan-600 transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -79,16 +82,16 @@ const Navigation: React.FC<NavigationProps> = ({ isScrolled }) => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden pb-4 space-y-2">
+          <div className="md:hidden pb-4 space-y-2 bg-white/98 rounded-lg mt-2">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.path}
                 onClick={() => setIsMenuOpen(false)}
-                className={`block px-4 py-2 rounded-lg transition-colors ${
+                className={`block px-4 py-2 rounded-lg transition-all duration-200 ${
                   isActive(link.path)
-                    ? 'bg-primary-50 text-primary-600'
-                    : 'text-gray-700 hover:bg-primary-50 hover:text-primary-600'
+                    ? 'bg-cyan-50 text-cyan-600 border-l-2 border-cyan-500'
+                    : 'text-gray-700 hover:bg-gray-50 hover:text-cyan-600'
                 }`}
               >
                 {link.name}

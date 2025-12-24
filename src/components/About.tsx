@@ -2,12 +2,14 @@ import React from 'react';
 
 const About: React.FC = () => {
   return (
-    <section className="section-container">
+    <section className="section-container bg-white">
       <div className="max-w-4xl mx-auto">
-        <h2 className="section-title text-center">About Me</h2>
-        <p className="section-subtitle text-center">
-          Get to know me better
-        </p>
+        <div className="text-center mb-16">
+          <h2 className="text-5xl sm:text-6xl font-black bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent mb-4 tracking-tight">
+            About Me
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto rounded-full"></div>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 text-gray-700 leading-relaxed">
@@ -28,11 +30,11 @@ const About: React.FC = () => {
           </div>
 
           <div className="relative">
-            <div className="bg-gradient-to-br from-primary-500 to-purple-600 rounded-2xl p-1 shadow-2xl">
-              <div className="bg-white rounded-2xl p-8">
-                <div className="aspect-square bg-gradient-to-br from-primary-100 to-purple-100 rounded-xl flex items-center justify-center">
+            <div className="bg-gradient-to-br from-cyan-500/20 via-blue-500/20 to-purple-500/20 rounded-2xl p-1 shadow-2xl shadow-cyan-500/20 backdrop-blur-sm">
+              <div className="bg-white backdrop-blur-sm rounded-2xl p-8 border border-gray-200">
+                <div className="aspect-square bg-gradient-to-br from-cyan-50 to-purple-50 rounded-xl flex items-center justify-center border border-cyan-200">
                   <svg
-                    className="w-32 h-32 text-primary-600"
+                    className="w-32 h-32 text-cyan-400"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -59,12 +61,12 @@ const About: React.FC = () => {
           ].map((stat, index) => (
             <div
               key={index}
-              className="text-center p-6 bg-gray-50 rounded-xl hover:bg-primary-50 transition-colors duration-200"
+              className="text-center p-6 bg-gray-50 backdrop-blur-sm rounded-xl border border-gray-200 hover:border-cyan-500/50 hover:bg-gray-100 transition-all duration-300 group"
             >
-              <div className="text-3xl font-bold text-primary-600 mb-2">
+              <div className="text-4xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">
                 {stat.value}
               </div>
-              <div className="text-gray-600">{stat.label}</div>
+              <div className="text-gray-600 text-sm font-medium">{stat.label}</div>
             </div>
           ))}
         </div>

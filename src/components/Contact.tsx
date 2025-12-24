@@ -18,7 +18,6 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
     console.log('Form submitted:', formData);
     alert('Thank you for your message! I will get back to you soon.');
     setFormData({ name: '', email: '', message: '' });
@@ -78,18 +77,19 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <section className="section-container">
+    <section className="section-container bg-white">
       <div className="max-w-4xl mx-auto">
-        <h2 className="section-title text-center">Get In Touch</h2>
-        <p className="section-subtitle text-center">
-          I'm always open to discussing new projects, creative ideas, or
-          opportunities to be part of your visions.
-        </p>
+        <div className="text-center mb-16">
+          <h2 className="text-5xl sm:text-6xl font-black bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent mb-4 tracking-tight">
+            Get In Touch
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto rounded-full"></div>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div className="card">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">
+          <div className="backdrop-blur-xl bg-gray-50 rounded-2xl p-8 border border-gray-200 hover:border-cyan-500/50 transition-all duration-300">
+            <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-6">
               Send me a message
             </h3>
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -107,7 +107,7 @@ const Contact: React.FC = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50 outline-none transition-all placeholder-gray-400"
                   placeholder="Your name"
                 />
               </div>
@@ -125,7 +125,7 @@ const Contact: React.FC = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50 outline-none transition-all placeholder-gray-400"
                   placeholder="your.email@example.com"
                 />
               </div>
@@ -143,13 +143,13 @@ const Contact: React.FC = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all resize-none"
+                  className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 text-gray-200 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50 outline-none transition-all resize-none placeholder-gray-500"
                   placeholder="Your message..."
                 />
               </div>
               <button
                 type="submit"
-                className="w-full btn-primary text-lg py-4"
+                className="w-full px-6 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-lg hover:shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105"
               >
                 Send Message
               </button>
@@ -159,7 +159,7 @@ const Contact: React.FC = () => {
           {/* Contact Information */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-6">
                 Let's connect
               </h3>
               <p className="text-gray-600 mb-8 leading-relaxed">
@@ -169,9 +169,9 @@ const Contact: React.FC = () => {
 
               <div className="space-y-4 mb-8">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 bg-primary-100 rounded-lg">
+                  <div className="p-3 bg-cyan-500/20 rounded-lg border border-cyan-500/30">
                     <svg
-                      className="w-6 h-6 text-primary-600"
+                      className="w-6 h-6 text-cyan-400"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -188,7 +188,7 @@ const Contact: React.FC = () => {
                     <p className="text-sm text-gray-500">Email</p>
                     <a
                       href="mailto:your.email@example.com"
-                      className="text-gray-900 hover:text-primary-600 transition-colors"
+                      className="text-cyan-600 hover:text-cyan-700 transition-colors"
                     >
                       your.email@example.com
                     </a>
@@ -209,7 +209,7 @@ const Contact: React.FC = () => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 bg-white rounded-lg shadow-md hover:shadow-lg hover:bg-primary-50 text-gray-700 hover:text-primary-600 transition-all duration-200"
+                    className="p-3 bg-white backdrop-blur-sm rounded-lg border border-gray-300 hover:border-cyan-500/50 hover:bg-gray-50 text-gray-700 hover:text-cyan-600 transition-all duration-200 hover:scale-110 hover:shadow-lg hover:shadow-cyan-500/20"
                     aria-label={social.name}
                   >
                     {social.icon}

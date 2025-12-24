@@ -3,7 +3,7 @@ import Experiences from '../components/Experiences';
 
 const ExperiencesPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white pt-16 md:pt-20">
+    <div className="min-h-screen pt-16 md:pt-20">
       <Experiences />
     </div>
   );

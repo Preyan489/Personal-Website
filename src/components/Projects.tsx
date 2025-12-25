@@ -32,6 +32,15 @@ const Projects: React.FC = () => {
       demo: '#',
       image: '/script-shelf.png',
     },
+    {
+      title: 'Wonky Kong',
+      description:
+        'Wonky Kong is a retro-style platformer where players jump across platforms, climb ladders, and avoid dangers such as rolling barrels and fireballs in their quest to reach Kong. Using burp-based attacks and collecting items along the way, players must survive each stage as the game ramps up in difficulty.',
+      technologies: ['C++', 'C'],
+      github: 'https://github.com/Preyan489/Wonky-Kong.git',
+      demo: '#',
+      image: '/wonky-kong.png',
+    },
   ];
 
   // Handle navigation from Skills page
@@ -80,7 +89,24 @@ const Projects: React.FC = () => {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="h-full w-auto object-contain group-hover:scale-105 transition-transform duration-500"
+                    className="h-full w-auto object-contain transition-transform duration-500"
+                    style={project.title === 'Wonky Kong' 
+                      ? { transform: 'scaleX(1.3)', transformOrigin: 'center' } 
+                      : {}}
+                    onMouseEnter={(e) => {
+                      if (project.title === 'Wonky Kong') {
+                        e.currentTarget.style.transform = 'scaleX(1.365)';
+                      } else {
+                        e.currentTarget.style.transform = 'scale(1.05)';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (project.title === 'Wonky Kong') {
+                        e.currentTarget.style.transform = 'scaleX(1.3)';
+                      } else {
+                        e.currentTarget.style.transform = 'scale(1)';
+                      }
+                    }}
                   />
                 ) : (
                   <>

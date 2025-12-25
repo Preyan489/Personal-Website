@@ -45,6 +45,10 @@ const Skills: React.FC = () => {
       {
         name: 'ScriptShelf',
         skills: ['JavaScript', 'CSS', 'TypeScript', 'HTML', 'Node.js', 'Cucumber', 'Express']
+      },
+      {
+        name: 'Wonky Kong',
+        skills: ['C++', 'C']
       }
     ];
 

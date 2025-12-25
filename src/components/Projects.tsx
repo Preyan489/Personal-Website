@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 
 interface Project {
   title: string;
@@ -10,40 +11,51 @@ interface Project {
 }
 
 const Projects: React.FC = () => {
+  const location = useLocation();
+  const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
   const projects: Project[] = [
     {
-      title: 'E-Commerce Platform',
+      title: 'TheraVoice',
       description:
-        'A full-featured e-commerce platform with shopping cart, payment integration, and admin dashboard. Built with React, Node.js, and MongoDB.',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Express'],
-      github: '#',
-      demo: '#',
+        'A modern AI mental health companion that delivers seamless voice-based conversations through real-time speech processing, intelligent response generation, and natural speech synthesis, supported by secure user accounts, persistent sessions, and a clean dark-mode design.',
+      technologies: ['FastAPI', 'Supabase', 'ElevenLabs', 'TypeScript', 'Material UI', 'Tailwind CSS', 'JWT', 'React/Vite'],
+      github: 'https://github.com/Preyan489/TheraVoice',
+      demo: 'https://devpost.com/software/theravoice',
+      image: '/theravoice-logo.png',
     },
     {
-      title: 'Task Management App',
+      title: 'ScriptShelf',
       description:
-        'A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.',
-      technologies: ['React', 'TypeScript', 'Firebase', 'Tailwind CSS'],
-      github: '#',
+        'A tool for organizing and managing reusable code snippets across projects. It provides a single place to store, search, and retrieve snippets whether you\'re working in the browser, your editor, or the web app making it easy to keep frequently used code accessible and well-organized.',
+      technologies: ['JavaScript', 'CSS', 'TypeScript', 'HTML', 'Node.js', 'Cucumber', 'Express'],
+      github: 'https://github.com/Preyan489/script-shelf',
       demo: '#',
-    },
-    {
-      title: 'Weather Dashboard',
-      description:
-        'A beautiful weather dashboard that displays current conditions and forecasts. Features geolocation and weather map integration.',
-      technologies: ['React', 'API Integration', 'Chart.js', 'CSS'],
-      github: '#',
-      demo: '#',
-    },
-    {
-      title: 'Social Media Analytics',
-      description:
-        'Analytics dashboard for social media metrics with data visualization, reporting, and export functionality.',
-      technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'D3.js'],
-      github: '#',
-      demo: '#',
+      image: '/script-shelf.png',
     },
   ];
+
+  // Handle navigation from Skills page
+  useEffect(() => {
+    const state = (location as any).state as { scrollToProject?: number } | null;
+    const index = state?.scrollToProject;
+    if (index !== undefined && typeof index === 'number' && projectRefs.current[index]) {
+      setTimeout(() => {
+        const ref = projectRefs.current[index];
+        if (ref) {
+          const elementRect = ref.getBoundingClientRect();
+          const elementTop = elementRect.top + window.pageYOffset;
+          const windowHeight = window.innerHeight;
+          const stickyHeaderHeight = 100;
+          const centerPosition = elementTop - (windowHeight / 2) + stickyHeaderHeight;
+
+          window.scrollTo({
+            top: Math.max(0, centerPosition),
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+    }
+  }, [location]);
 
   return (
     <section className="section-container bg-white">
@@ -55,46 +67,57 @@ const Projects: React.FC = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <div
               key={index}
+              ref={(el) => (projectRefs.current[index] = el)}
               className="group backdrop-blur-xl bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 hover:border-cyan-500/50 hover:shadow-2xl hover:shadow-cyan-500/20 transition-all duration-300 transform hover:-translate-y-2"
             >
-              {/* Project Image Placeholder */}
-              <div className="w-full h-48 bg-gradient-to-br from-cyan-500/20 via-blue-500/20 to-purple-500/20 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/30 to-purple-500/30 group-hover:scale-110 transition-transform duration-500"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <svg
-                    className="w-20 h-20 text-cyan-400/50"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-                    />
-                  </svg>
-                </div>
+              {/* Project Image */}
+              <div className={`w-full h-40 relative overflow-hidden ${project.image ? 'bg-[#fbfbfa] flex items-center justify-center' : 'bg-gradient-to-br from-cyan-500/20 via-blue-500/20 to-purple-500/20'}`}>
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="h-full w-auto object-contain group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <>
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/30 to-purple-500/30 group-hover:scale-110 transition-transform duration-500"></div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <svg
+                        className="w-20 h-20 text-cyan-400/50"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                        />
+                      </svg>
+                    </div>
+                  </>
+                )}
               </div>
 
-              <div className="p-6">
-                <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-3">
+              <div className="p-5">
+                <h3 className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-2">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">
+                <p className="text-gray-600 mb-4 leading-relaxed text-sm">
                   {project.description}
                 </p>
 
                 {/* Technologies */}
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="px-3 py-1 bg-cyan-500/20 text-cyan-300 rounded-full text-sm font-medium border border-cyan-500/30"
+                      className="px-2 py-1 bg-cyan-500/20 text-blue-700 rounded-full text-xs font-medium border border-cyan-500/30"
                     >
                       {tech}
                     </span>
@@ -122,29 +145,6 @@ const Projects: React.FC = () => {
                         />
                       </svg>
                       Code
-                    </a>
-                  )}
-                  {project.demo && (
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-gray-700 hover:text-cyan-600 transition-colors font-medium group/link"
-                    >
-                      <svg
-                        className="w-5 h-5 group-hover/link:scale-110 transition-transform"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                        />
-                      </svg>
-                      Live Demo
                     </a>
                   )}
                 </div>

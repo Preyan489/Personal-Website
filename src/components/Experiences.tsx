@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 
 interface Experience {
   company: string;
@@ -6,13 +7,16 @@ interface Experience {
   title: string;
   period: string;
   bullets: string[];
+  skills?: string[];
 }
 
 const Experiences: React.FC = () => {
+  const location = useLocation();
   const [activeIndex, setActiveIndex] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
   const experienceRefs = useRef<(HTMLDivElement | null)[]>([]);
   const sectionRef = useRef<HTMLElement>(null);
+  const isScrollingRef = useRef(false);
 
   const experiences: Experience[] = [
     {
@@ -25,17 +29,7 @@ const Experiences: React.FC = () => {
         'Integrated Django services, Vue components, and PostgreSQL workflows into the platform\'s architecture, unifying data-access patterns and leading to a 30% system stability improvement and load consistency',
         'Improved CI/CD reliability by containerizing services with Docker and deploying via Kubernetes on Azure',
       ],
-    },
-    {
-      company: 'UCLA Mobility Lab',
-      location: 'Los Angeles, CA',
-      title: 'Research Assistant',
-      period: 'Jan 2025 - Present',
-      bullets: [
-        'Built multimodal data pipelines in Python and PyTorch combining high-resolution video, synchronized telemetry, and scenario metadata, supporting scalable autonomous driving perception and research in Agile',
-        'Used Hugging Face Transformers to encode driving commands, producing structured representations that improved consistency across supervised learning and reinforcement-based policy evaluation workflows',
-        'Created standardized preprocessing utilities using NumPy that reduced manual setup for model-training runs',
-      ],
+      skills: ['Node.js/Express', 'Django', 'Vue', 'PostgreSQL', 'Docker', 'Kubernetes', 'Azure'],
     },
     {
       company: 'Exo Imaging',
@@ -47,6 +41,19 @@ const Experiences: React.FC = () => {
         'Automated board diagnostics and metric logging using pytest, enabling early anomaly detection',
         'Performed statistical analysis using pandas and SciPy to validate imaging signal quality and detect anomalies',
       ],
+      skills: ['MongoDB', 'Python', 'pytest', 'pandas', 'SciPy'],
+    },
+    {
+      company: 'UCLA Mobility Lab',
+      location: 'Los Angeles, CA',
+      title: 'Research Assistant',
+      period: 'Jan 2025 - Present',
+      bullets: [
+        'Built multimodal data pipelines in Python and PyTorch combining high-resolution video, synchronized telemetry, and scenario metadata, supporting scalable autonomous driving perception and research in Agile',
+        'Used Hugging Face Transformers to encode driving commands, producing structured representations that improved consistency across supervised learning and reinforcement-based policy evaluation workflows',
+        'Created standardized preprocessing utilities using NumPy that reduced manual setup for model-training runs',
+      ],
+      skills: ['Python', 'PyTorch', 'Hugging Face Transformers', 'NumPy', 'Agile'],
     },
     {
       company: 'Inspirit AI',
@@ -57,8 +64,21 @@ const Experiences: React.FC = () => {
         'Completed mentored ML project in supervised learning/error analysis, gaining experience with iterative training',
         'Researched algorithmic bias and how dataset imbalance and model design can create inequitable outcomes',
       ],
+      skills: ['Machine Learning', 'Supervised Learning'],
     },
   ];
+
+  // Handle navigation from Skills page
+  useEffect(() => {
+    const state = (location as any).state as { scrollToExperience?: number } | null;
+    const index = state?.scrollToExperience;
+    if (index !== undefined && typeof index === 'number' && experienceRefs.current[index]) {
+      // Small delay to ensure page is rendered
+      setTimeout(() => {
+        scrollToExperience(index);
+      }, 100);
+    }
+  }, [location]);
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
@@ -68,6 +88,9 @@ const Experiences: React.FC = () => {
 
       const observer = new IntersectionObserver(
         (entries) => {
+          // Don't update if we're in the middle of a programmatic scroll
+          if (isScrollingRef.current) return;
+
           entries.forEach((entry) => {
             if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
               setActiveIndex(index);
@@ -76,7 +99,7 @@ const Experiences: React.FC = () => {
         },
         {
           threshold: [0, 0.25, 0.5, 0.75, 1],
-          rootMargin: '-20% 0px -20% 0px',
+          rootMargin: '-30% 0px -30% 0px',
         }
       );
 
@@ -99,14 +122,15 @@ const Experiences: React.FC = () => {
       const sectionTop = rect.top;
       const sectionHeight = rect.height;
       
-      // Calculate progress based on how much of the section has been scrolled
+      // Calculate progress based on how much of the section has been scrolled through
       const scrollableDistance = sectionHeight - windowHeight;
       const scrolled = Math.max(0, -sectionTop);
       const progress = scrollableDistance > 0 ? (scrolled / scrollableDistance) * 100 : 0;
+      
       setScrollProgress(Math.min(100, Math.max(0, progress)));
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Initial calculation
 
     return () => {
@@ -116,17 +140,32 @@ const Experiences: React.FC = () => {
 
   const scrollToExperience = (index: number) => {
     const ref = experienceRefs.current[index];
-    if (ref) {
-      const offset = 100; // Account for header
-      const elementPosition = ref.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
+    if (!ref) return;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      setActiveIndex(index);
-    }
+    // Set flag to prevent intersection observer from interfering
+    isScrollingRef.current = true;
+    setActiveIndex(index);
+
+    // Get element position relative to document
+    const elementRect = ref.getBoundingClientRect();
+    const elementTop = elementRect.top + window.pageYOffset;
+    const elementHeight = elementRect.height;
+    const windowHeight = window.innerHeight;
+    
+    // Calculate position to center the element vertically
+    // Position element so its center aligns with viewport center, accounting for sticky header
+    const stickyHeaderHeight = 180; // Account for sticky header/progress bar
+    const centerPosition = elementTop - (windowHeight / 2) + (elementHeight / 2) - stickyHeaderHeight;
+
+    window.scrollTo({
+      top: Math.max(0, centerPosition),
+      behavior: 'smooth'
+    });
+
+    // Reset flag after scroll completes
+    setTimeout(() => {
+      isScrollingRef.current = false;
+    }, 1000);
   };
 
   return (
@@ -285,33 +324,83 @@ const Experiences: React.FC = () => {
                       </div>
 
                       <ul className="space-y-4">
-                        {experience.bullets.map((bullet, bulletIndex) => (
-                          <li
-                            key={bulletIndex}
-                            className="flex items-start gap-4 text-gray-700 leading-relaxed group/item"
-                          >
-                            <span
-                              className={`mt-1.5 flex-shrink-0 transition-all duration-300 ${
-                                activeIndex === index
-                                  ? 'text-cyan-600 group-hover/item:scale-110'
-                                  : 'text-gray-400'
-                              }`}
+                        {experience.bullets.map((bullet, bulletIndex) => {
+                          // Function to convert skill words to bubbles
+                          const renderBulletWithSkills = (text: string, skills: string[] = []) => {
+                            if (!skills || skills.length === 0) return text;
+                            
+                            // Sort skills by length (longest first) to match longer phrases first
+                            const sortedSkills = [...skills].sort((a, b) => b.length - a.length);
+                            let result: (string | JSX.Element)[] = [text];
+                            
+                            sortedSkills.forEach((skill) => {
+                              const newResult: (string | JSX.Element)[] = [];
+                              result.forEach((item) => {
+                                if (typeof item === 'string') {
+                                  // Split by the skill word (case-insensitive)
+                                  const regex = new RegExp(`\\b(${skill.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})\\b`, 'gi');
+                                  const parts = item.split(regex);
+                                  
+                                  parts.forEach((part, partIndex) => {
+                                    if (part.toLowerCase() === skill.toLowerCase()) {
+                                      // This is the skill word - make it a bubble
+                                      newResult.push(
+                                        <span
+                                          key={`${skill}-${partIndex}`}
+                                          className={`inline-block px-2 py-0.5 mx-0.5 rounded-full text-xs font-medium border transition-all duration-300 ${
+                                            activeIndex === index
+                                              ? 'bg-cyan-500/20 text-blue-700 border-cyan-500/30'
+                                              : 'bg-gray-100 text-gray-600 border-gray-300'
+                                          }`}
+                                          style={{ verticalAlign: 'baseline', lineHeight: '1.5', marginTop: '0', marginBottom: '0' }}
+                                        >
+                                          {part}
+                                        </span>
+                                      );
+                                    } else if (part) {
+                                      newResult.push(part);
+                                    }
+                                  });
+                                } else {
+                                  newResult.push(item);
+                                }
+                              });
+                              result = newResult;
+                            });
+                            
+                            return result;
+                          };
+                          
+                          return (
+                            <li
+                              key={bulletIndex}
+                              className="flex items-start gap-4 text-gray-700 group/item"
                             >
-                              <svg
-                                className="w-5 h-5"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
+                              <span
+                                className={`mt-1.5 flex-shrink-0 transition-all duration-300 ${
+                                  activeIndex === index
+                                    ? 'text-cyan-600 group-hover/item:scale-110'
+                                    : 'text-gray-400'
+                                }`}
                               >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
-                            </span>
-                            <span className="flex-1">{bullet}</span>
-                          </li>
-                        ))}
+                                <svg
+                                  className="w-5 h-5"
+                                  fill="currentColor"
+                                  viewBox="0 0 20 20"
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                              </span>
+                              <div className="flex-1" style={{ lineHeight: '1.75', fontSize: 'inherit' }}>
+                                {renderBulletWithSkills(bullet, experience.skills)}
+                              </div>
+                            </li>
+                          );
+                        })}
                       </ul>
                     </div>
                   </div>

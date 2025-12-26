@@ -4,13 +4,13 @@ A modern, responsive personal portfolio website built with React, TypeScript, an
 
 ## Features
 
-- 🎨 Modern and beautiful UI design
-- 📱 Fully responsive (mobile, tablet, desktop)
-- ⚡ Fast and performant
-- 🎯 Smooth scrolling navigation
-- 💫 Smooth animations and transitions
-- 🎨 Customizable color scheme
-- 🔍 SEO-friendly structure
+- Modern and beautiful UI design
+- Fully responsive (mobile, tablet, desktop)
+- Fast and performant
+- Smooth scrolling navigation
+- Smooth animations and transitions
+- Customizable color scheme
+- SEO-friendly structure
 
 ## Sections
 

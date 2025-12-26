@@ -58,9 +58,9 @@ const About: React.FC = () => {
                   <h3 className="font-semibold text-sm md:text-base text-gray-900">Currently working on:</h3>
                 </div>
                 <ul className="list-disc list-inside space-y-1 text-sm md:text-base pl-0 ml-0">
-                  <li>Software Developer for Daily Bruin Internal Tools Team</li>
-                  <li>Machine Learning Researcher at UCLA Mobility Lab</li>
-                  <li>Technology Consulting Director at Glitch UCLA</li>
+                  <li className="whitespace-nowrap">Software Developer for Daily Bruin Internal Tools Team</li>
+                  <li className="whitespace-nowrap">Machine Learning Researcher at UCLA Mobility Lab</li>
+                  <li className="whitespace-nowrap">Technology Consulting Director at Glitch UCLA</li>
                 </ul>
               </div>
 
@@ -68,7 +68,7 @@ const About: React.FC = () => {
               <div className="space-y-1.5">
                 <h3 className="font-bold text-sm md:text-base text-gray-900">Some Fun Facts:</h3>
                 <p className="text-sm md:text-base leading-relaxed">
-                  I'm an avid matcha drinker. I compete for Team USA Taekwondo. I've played piano for seven years. I resell shoes out of love. I've visited 11 countries. My favorite number is 6. And Korean raw marinated crab's my favorite food.
+                  I've played piano for nine years. I resell shoes out of love. I've visited 11 countries. My favorite number is 7. And Korean raw marinated crab's my favorite food.
                 </p>
               </div>
             </div>
@@ -123,18 +123,6 @@ const About: React.FC = () => {
               <span className="font-medium text-gray-700">LinkedIn</span>
             </a>
 
-            {/* X (Twitter) */}
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors shadow-sm text-sm"
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-              </svg>
-              <span className="font-medium text-gray-700">X</span>
-            </a>
           </div>
         </div>
       </div>

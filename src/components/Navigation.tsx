@@ -32,7 +32,7 @@ const Navigation: React.FC<NavigationProps> = ({ isScrolled }) => {
             to="/"
             className="text-2xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent hover:from-cyan-300 hover:to-blue-400 transition-all duration-300"
           >
-            Portfolio
+            Me
           </Link>
 
           {/* Desktop Navigation */}

@@ -21,7 +21,7 @@ const Projects: React.FC = () => {
       technologies: ['FastAPI', 'Supabase', 'ElevenLabs', 'TypeScript', 'Material UI', 'Tailwind CSS', 'JWT', 'React/Vite'],
       github: 'https://github.com/Preyan489/TheraVoice',
       demo: 'https://devpost.com/software/theravoice',
-      image: '/theravoice-logo.png',
+      image: `${process.env.PUBLIC_URL || ''}/theravoice-logo.png`,
     },
     {
       title: 'ScriptShelf',
@@ -30,7 +30,7 @@ const Projects: React.FC = () => {
       technologies: ['JavaScript', 'CSS', 'TypeScript', 'HTML', 'Node.js', 'Cucumber', 'Express'],
       github: 'https://github.com/Preyan489/script-shelf',
       demo: '#',
-      image: '/script-shelf.png',
+      image: `${process.env.PUBLIC_URL || ''}/script-shelf.png`,
     },
     {
       title: 'Wonky Kong',
@@ -39,7 +39,7 @@ const Projects: React.FC = () => {
       technologies: ['C++', 'C'],
       github: 'https://github.com/Preyan489/Wonky-Kong.git',
       demo: '#',
-      image: '/wonky-kong.png',
+      image: `${process.env.PUBLIC_URL || ''}/wonky-kong.png`,
     },
   ];
 

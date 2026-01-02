@@ -25,11 +25,11 @@ const Experiences: React.FC = () => {
       title: 'Software Engineer',
       period: 'Oct 2025 - Present',
       bullets: [
-        'Refactored core routing and server-side data flows in Node.js/Express to eliminate redundant queries, streamline core request execution paths, and reduce latency across article, homepage, and media-serving endpoints',
-        'Integrated Django services, Vue components, and PostgreSQL workflows into the platform\'s architecture, unifying data-access patterns and leading to a 30% system stability improvement and load consistency',
+        'Refactored core routing and server-side data flows using Node.js to eliminate redundant queries, streamline critical end-to-end core request execution paths, and reduce latency across article, homepage, and media-serving endpoints',
+        'Integrated Django services, Vue.js components, and PostgreSQL workflows into the platform\'s architecture, unifying data-access patterns and leading to a measurable 30% system stability improvement and load consistency',
         'Improved CI/CD reliability by containerizing services with Docker and deploying via Kubernetes on Azure',
       ],
-      skills: ['Node.js/Express', 'Django', 'Vue', 'PostgreSQL', 'Docker', 'Kubernetes', 'Azure'],
+      skills: ['Node.js', 'Django', 'Vue.js', 'PostgreSQL', 'Docker', 'Kubernetes', 'Azure'],
     },
     {
       company: 'Exo Imaging',
@@ -37,11 +37,11 @@ const Experiences: React.FC = () => {
       title: 'Software Engineer Intern',
       period: 'June 2025 - Sept 2025',
       bullets: [
-        'Designed MongoDB schemas and Python ingestion workflows to organize diagnostic data from ultrasound transmitter boards, improving trace accuracy and reducing inconsistencies in hardware-driven test environments',
-        'Automated board diagnostics and metric logging using pytest, enabling early anomaly detection',
-        'Performed statistical analysis using pandas and SciPy to validate imaging signal quality and detect anomalies',
+        'Designed MongoDB schemas and Python workflows to organize diagnostic data from ultrasound transmitter boards, improving trace accuracy and reducing data inconsistencies by 23% in hardware-driven test environments',
+        'Automated board diagnostics and anomaly detection using pytest logging and pandas/SciPy statistical analysis',
+        'Built backend data ingestion and validation pipelines with ETL pipeline design, incorporating schema enforcement and error handling to ensure reliable data flow across hardware testing and analysis workflows',
       ],
-      skills: ['MongoDB', 'Python', 'pytest', 'pandas', 'SciPy'],
+      skills: ['MongoDB', 'Python', 'pytest', 'pandas', 'SciPy', 'ETL pipeline design'],
     },
     {
       company: 'UCLA Mobility Lab',
@@ -49,11 +49,11 @@ const Experiences: React.FC = () => {
       title: 'Research Assistant',
       period: 'Jan 2025 - Present',
       bullets: [
-        'Built multimodal data pipelines in Python and PyTorch combining high-resolution video, synchronized telemetry, and scenario metadata, supporting scalable autonomous driving perception and research in Agile',
-        'Used Hugging Face Transformers to encode driving commands, producing structured representations that improved consistency across supervised learning and reinforcement-based policy evaluation workflows',
-        'Created standardized preprocessing utilities using NumPy that reduced manual setup for model-training runs',
+        'Built multimodal data pipelines in Python and PyTorch integrating video, synchronized telemetry, and scenario metadata, supporting autonomous driving perception research across over 2,000 labeled driving scenarios',
+        'Applied Hugging Face Transformers to encode driving commands for supervised and reinforcement workflows',
+        'Utilized TensorFlow/Keras to modularize model training and evaluation pipelines, enabling consistent iteration',
       ],
-      skills: ['Python', 'PyTorch', 'Hugging Face Transformers', 'NumPy', 'Agile'],
+      skills: ['Python', 'PyTorch', 'Hugging Face Transformers', 'TensorFlow/Keras', 'Keras'],
     },
     {
       company: 'Inspirit AI',

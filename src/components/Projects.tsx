@@ -18,7 +18,7 @@ const Projects: React.FC = () => {
       title: 'TheraVoice',
       description:
         'A modern AI mental health companion that delivers seamless voice-based conversations through real-time speech processing, intelligent response generation, and natural speech synthesis, supported by secure user accounts, persistent sessions, and a clean dark-mode design.',
-      technologies: ['FastAPI', 'Supabase', 'ElevenLabs', 'TypeScript', 'Material UI', 'Tailwind CSS', 'JWT', 'React/Vite'],
+      technologies: ['FastAPI', 'Supabase', 'ElevenLabs', 'TypeScript', 'Material UI', 'Tailwind CSS', 'JWT', 'React.js/Vite'],
       github: 'https://github.com/Preyan489/TheraVoice',
       demo: 'https://devpost.com/software/theravoice',
       image: `${process.env.PUBLIC_URL || ''}/theravoice-logo.png`,

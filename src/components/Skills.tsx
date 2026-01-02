@@ -20,7 +20,7 @@ const Skills: React.FC = () => {
     const experiences = [
       {
         name: 'Daily Bruin',
-        skills: ['Node.js/Express', 'Django', 'Vue', 'PostgreSQL', 'Docker', 'Kubernetes', 'Azure']
+        skills: ['Node.js/Express', 'Django', 'Vue.js', 'PostgreSQL', 'Docker', 'Kubernetes', 'Azure']
       },
       {
         name: 'Exo Imaging',
@@ -28,7 +28,7 @@ const Skills: React.FC = () => {
       },
       {
         name: 'UCLA Mobility Lab',
-        skills: ['Python', 'PyTorch', 'Hugging Face Transformers', 'NumPy', 'Agile']
+        skills: ['Python', 'PyTorch', 'Hugging Face Transformers', 'TensorFlow/Keras', 'Keras']
       },
       {
         name: 'Inspirit AI',
@@ -40,7 +40,7 @@ const Skills: React.FC = () => {
     const projects = [
       {
         name: 'TheraVoice',
-        skills: ['FastAPI', 'Supabase', 'ElevenLabs', 'TypeScript', 'Material UI', 'Tailwind CSS', 'JWT', 'React', 'Vite']
+        skills: ['FastAPI', 'Supabase', 'ElevenLabs', 'TypeScript', 'Material UI', 'Tailwind CSS', 'JWT', 'React.js', 'Vite']
       },
       {
         name: 'ScriptShelf',

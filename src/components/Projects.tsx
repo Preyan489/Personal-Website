@@ -41,6 +41,15 @@ const Projects: React.FC = () => {
       demo: '#',
       image: `${process.env.PUBLIC_URL || ''}/wonky-kong.png`,
     },
+    {
+      title: 'StreamForge',
+      description:
+        'A video streaming platform where users can upload videos, share them securely, and track video performance. The platform automatically processes uploaded videos and allows the user to modify visibility settings. The user can view analytics including total views and watch starts, as well as get real-time updates when their videos finish processing, so they know when they\'re ready to watch.',
+      technologies: ['Next.js', 'React.js', 'TypeScript', 'Tailwind CSS', 'hls.js', 'Node.js', 'BullMQ', 'Redis', 'Clerk', 'AWS SDK', 'FFmpeg'],
+      github: 'https://github.com/Preyan489/Stream-Forge',
+      demo: '#',
+      image: `${process.env.PUBLIC_URL || ''}/stream-forge.png`,
+    },
   ];
 
   // Handle navigation from Skills page

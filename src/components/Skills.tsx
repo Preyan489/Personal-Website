@@ -49,6 +49,10 @@ const Skills: React.FC = () => {
       {
         name: 'Wonky Kong',
         skills: ['C++', 'C']
+      },
+      {
+        name: 'StreamForge',
+        skills: ['Next.js', 'React.js', 'TypeScript', 'Tailwind CSS', 'hls.js', 'Node.js', 'BullMQ', 'Redis', 'Clerk', 'AWS SDK', 'FFmpeg']
       }
     ];
 

@@ -53,7 +53,7 @@ const Experiences: React.FC = () => {
         'Applied Hugging Face Transformers to encode driving commands for supervised and reinforcement workflows',
         'Utilized TensorFlow/Keras to modularize model training and evaluation pipelines, enabling consistent iteration',
       ],
-      skills: ['Python', 'PyTorch', 'Hugging Face Transformers', 'TensorFlow/Keras', 'Keras'],
+      skills: ['Python', 'PyTorch', 'Hugging Face Transformers', 'TensorFlow/Keras'],
     },
     {
       company: 'Inspirit AI',

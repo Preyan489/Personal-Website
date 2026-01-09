@@ -18,7 +18,7 @@ const Projects: React.FC = () => {
       title: 'TheraVoice',
       description:
         'A modern AI mental health companion that delivers seamless voice-based conversations through real-time speech processing, intelligent response generation, and natural speech synthesis, supported by secure user accounts, persistent sessions, and a clean dark-mode design.',
-      technologies: ['FastAPI', 'Supabase', 'ElevenLabs', 'TypeScript', 'Material UI', 'Tailwind CSS', 'JWT', 'React.js/Vite'],
+      technologies: ['FastAPI', 'Supabase', 'ElevenLabs', 'TypeScript', 'Material UI', 'Tailwind CSS', 'JWT', 'React/Vite'],
       github: 'https://github.com/Preyan489/TheraVoice',
       demo: 'https://devpost.com/software/theravoice',
       image: `${process.env.PUBLIC_URL || ''}/theravoice-logo.png`,
@@ -40,15 +40,6 @@ const Projects: React.FC = () => {
       github: 'https://github.com/Preyan489/Wonky-Kong.git',
       demo: '#',
       image: `${process.env.PUBLIC_URL || ''}/wonky-kong.png`,
-    },
-    {
-      title: 'StreamForge',
-      description:
-        'A video streaming platform where users can upload videos, share them securely, and track video performance. The platform automatically processes uploaded videos and allows the user to modify visibility settings. The user can view analytics including total views and watch starts, as well as get real-time updates when their videos finish processing, so they know when they\'re ready to watch.',
-      technologies: ['Next.js', 'React.js', 'TypeScript', 'Tailwind CSS', 'hls.js', 'Node.js', 'BullMQ', 'Redis', 'Clerk', 'AWS SDK', 'FFmpeg'],
-      github: 'https://github.com/Preyan489/Stream-Forge',
-      demo: '#',
-      image: `${process.env.PUBLIC_URL || ''}/stream-forge.png`,
     },
   ];
 

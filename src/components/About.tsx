@@ -68,7 +68,7 @@ const About: React.FC = () => {
               <div className="space-y-1.5">
                 <h3 className="font-bold text-sm md:text-base text-gray-900">Some Fun Facts:</h3>
                 <p className="text-sm md:text-base leading-relaxed">
-                  I have played piano for nine year. My favorite pastime is watching NBA games. My favorite food is quesabirria tacos. And my dream is to visit every single continent in the world.
+                  I have played piano for nine years. My favorite pastime is watching NBA games. My favorite food is quesabirria tacos. And my dream is to visit every single continent in the world one day.
                 </p>
               </div>
             </div>

@@ -59,7 +59,7 @@ const About: React.FC = () => {
                 </div>
                 <ul className="list-disc list-inside space-y-1 text-sm md:text-base pl-0 ml-0">
                   <li className="whitespace-nowrap">Software Developer for Daily Bruin Internal Tools Team</li>
-                  <li className="whitespace-nowrap">Machine Learning Researcher at UCLA Mobility Lab</li>
+                  <li className="whitespace-nowrap">Software Engineer at NVIDIA</li>
                   <li className="whitespace-nowrap">Technology Consulting Director at Glitch UCLA</li>
                 </ul>
               </div>

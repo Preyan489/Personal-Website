@@ -19,6 +19,10 @@ const Skills: React.FC = () => {
     // Skills from experiences
     const experiences = [
       {
+        name: 'NVIDIA',
+        skills: ['Rust', 'GitLab APIs', 'Docker', 'AI/ML', 'HPC', 'Tableau']
+      },
+      {
         name: 'Daily Bruin',
         skills: ['Node.js/Express', 'Django', 'Vue', 'PostgreSQL', 'Docker', 'Kubernetes', 'Azure']
       },

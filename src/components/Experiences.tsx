@@ -20,6 +20,18 @@ const Experiences: React.FC = () => {
 
   const experiences: Experience[] = [
     {
+      company: 'NVIDIA',
+      location: 'Santa Clara, CA',
+      title: 'Software Engineer',
+      period: 'Apr 2026 - Present',
+      bullets: [
+        'Developing an autonomous developer-workflow agent in Rust that integrates with GitLab APIs, evaluates merge requests and CI/CD checks, and delivers real-time engineering insights across over 50 projects to over 20 teams',
+        'Building production-ready Docker containers and hardware-optimized backends for open-source applications such as LAMMPS and Qiskit, enabling scalable, reproducible execution for comparison across different GPU platforms',
+        'Benchmarking and optimizing GPU, CPU, memory, and I/O performance across containerized AI/ML and HPC workloads, visually analyzing results in Tableau and validating performance against a 2% error tolerance',
+      ],
+      skills: ['Rust', 'GitLab APIs', 'Docker', 'AI/ML', 'HPC', 'Tableau'],
+    },
+    {
       company: 'Daily Bruin',
       location: 'Los Angeles, CA',
       title: 'Software Engineer',
